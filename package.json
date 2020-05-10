@@ -1,0 +1,8 @@
+{
+  "name": "Yupee-Chrome-Extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dioneijd/Yupee-Chrome-Extension.git",
+  "author": "Dionei J. Delangolo <dionei.jd@gmail.com>",
+  "license": "MIT"
+}

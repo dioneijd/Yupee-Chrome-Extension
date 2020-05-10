@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "version": "0.0.1",
+    "name": "Yupee Reports Extension",
+    "description": "Yupee Reports Extension",
+    "author": "Dionei J. Delagnolo",
+    "browser_action": {
+   	 "default_title": "Yupee Reports",
+   	 "default_popup": "src/main.html",
+   	 "default_icon": "src/assets/icon.png"
+    }
+}
