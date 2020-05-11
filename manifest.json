@@ -8,5 +8,17 @@
    	 "default_title": "Yupee Reports",
    	 "default_popup": "src/main.html",
    	 "default_icon": "src/assets/icon.png"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://seguro.yupee.com.br/GerenciadorFinanceiro/*"
+            ],
+            "js": ["src/content.js", "src/libraries/axios.min.js"],
+            "css": [ "src/style.css" ]
+        }
+    ],
+
+
+    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'"
 }
