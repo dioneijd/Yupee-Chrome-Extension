@@ -9,3 +9,4 @@ To solve that, I created a Chrome extension, that generate some extras report I 
 See the example below:
 
 
+<img src="./example.gif"/>
