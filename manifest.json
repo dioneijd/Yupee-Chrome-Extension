@@ -14,7 +14,7 @@
             "matches": [
                 "https://seguro.yupee.com.br/GerenciadorFinanceiro/*"
             ],
-            "js": ["src/content.js", "src/libraries/axios.min.js"],
+            "js": ["src/content.js", "src/libraries/axios.min.js", "src/libraries/zingchart.min.js"],
             "css": [ "src/style.css" ]
         }
     ],
