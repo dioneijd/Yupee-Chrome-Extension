@@ -1,4 +1,4 @@
-console.log('running my extension')
+console.log('>[content] Extension is running...')
 
 
 
@@ -49,9 +49,11 @@ const agentReportElements = setInterval(() => {
     
                 <button id="btnRunReport">Executar</button>
             </div>
+            
+            <div id="YR_chart">
+            </div>
 
             <div id="YR_result">
-
             </div>
 
         `
@@ -65,8 +67,6 @@ const agentReportElements = setInterval(() => {
         
         const inputToDate = document.querySelector('#dateTo')
         inputToDate.addEventListener('change', handleInputChange)
-
-
     }
 
 }, 200)
@@ -77,8 +77,7 @@ function handleInputChange(event){
     const setValue = {
         dateFrom: (event) => state.dateFrom = event.target.value,
         dateTo: (event) => state.dateTo = event.target.value
-    }
-    
+    }    
 
     setValue[event.target.id](event)    
     console.log(state)
@@ -128,6 +127,7 @@ function getCategories(){
 
     state.categories.sort()
 }
+
 
 function mountPivotData(){    
     
@@ -190,7 +190,49 @@ function mountReportTable(){
     })
 }
 
+function mountChart(){
+    const YR_chart = document.querySelector('#YR_chart')
 
+    console.log('> [mountChart] ')
+
+    let series = []
+    let serie = ['', 0]
+
+    state.pivotData.forEach(reg => {
+    
+        if (serie[0] != reg.period) {
+            series.push([serie[0], serie[1]])
+            serie[0] = reg.period
+            serie[1] = 0
+        }       
+
+        serie[1] += reg.value
+
+    })
+
+    series.push([serie[0], serie[1]])
+    series.splice(0,1)
+
+    console.log(series)
+
+    console.log(JSON.stringify(series))
+
+
+
+
+    zingchart.render({
+        id: 'YR_chart',
+        data: {
+            type: "line",
+            series: [
+                { values: series},
+                //{ values: series},
+            ]
+        }
+    })
+
+
+}
 
 
 
@@ -201,8 +243,9 @@ async function runReport(){
     getCategories()
     mountPivotData()
     mountReportTable()
+    mountChart()
     
-    console.clear()
+    //console.clear()
     console.log('>>> STATE OBJ')
     console.log(state)
 }
